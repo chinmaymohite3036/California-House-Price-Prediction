@@ -120,3 +120,8 @@ plt.title("Model Comparison")
 plt.ylabel("RMSE")
 plt.xlabel("Model")
 plt.show()
+
+print("\nAverage RMSE Scores:")
+print(f"Linear Regression: {lin_rmses.mean():.2f}")
+print(f"Decision Tree: {dec_rmses.mean():.2f}")
+print(f"Random Forest: {random_forest_rmses.mean():.2f}")
