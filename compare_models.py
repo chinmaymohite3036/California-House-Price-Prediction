@@ -10,7 +10,7 @@ from sklearn.tree import DecisionTreeRegressor
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import root_mean_squared_error
 from sklearn.model_selection import cross_val_score
-
+import matplotlib.pyplot as plt
 
 #1. Loading Dataset
 housing = pd.read_csv("housing.csv")
@@ -100,3 +100,23 @@ random_forest_rmses = -cross_val_score(random_forest_reg, housing_prepared, hous
 print("Random Forest CV RMSE:")
 
 print(pd.Series(random_forest_rmses).describe())
+
+models = [
+    "Linear Regression",
+    "Decision Tree",
+    "Random Forest"
+]
+
+scores = [
+    lin_rmses.mean(),
+    dec_rmses.mean(),
+    random_forest_rmses.mean()
+]
+
+plt.figure(figsize=(8,5))
+plt.bar(models, scores)
+
+plt.title("Model Comparison")
+plt.ylabel("RMSE")
+plt.xlabel("Model")
+plt.show()
